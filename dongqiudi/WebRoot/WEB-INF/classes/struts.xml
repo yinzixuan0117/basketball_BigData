@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+ <package name="struts2" extends="struts-default" namespace="/">
+    
+        <interceptors>
+           <interceptor name="loginInterceptor" class="com.other.AuthInterceptor"/>
+            <interceptor-stack name="AuthStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+ 
+        <default-interceptor-ref name="AuthStack"/>
+ 
+        <global-results>
+            <result name="error">/login.jsp</result>
+        </global-results>
+        
+    <action name="login" class="com.action.LoginAction">     
+        <result name="succlogin">/index.jsp</result>  
+        <result name="input">/login.jsp</result> 
+         <interceptor-ref name="defaultStack"/>
+      </action>
+    <action name="register" class="com.action.RegisterAction">     
+        <result name="success">/login.jsp</result>   
+     </action>
+     <action name="select" class="com.action.SelectAction">     
+        <result name="success">/match_result.jsp</result>   
+     </action>
+     <action name="show_*" class="com.action.ShowAction" method="{1}">     
+        <result name="list">/player_result.jsp</result> 
+        <result name="listT">/team_result.jsp</result>
+        <result name="listS">/match_result.jsp</result>  
+      </action>
+      <action name="delete_*" class="com.action.DeleteAction" method="{1}">     
+        <result name="success">/admin.jsp</result> 
+        <result name="fail">/admin.jsp</result> 
+      </action>
+      <action name="insert_*" class="com.action.InsertAction" method="{1}">     
+        <result name="success">/admin.jsp</result> 
+        <result name="fail">/admin.jsp</result> 
+      </action>
+<!-- 修改用户 -->
+ <action name="update" class="com.action.UpdateAction" method="select">
+          <result>/update.jsp</result>
+          <result name="fail">/admin.jsp</result>
+ </action>
+ <action name="delete" class="com.action.UpdateAction" method="update">
+          <result name="success">/admin.jsp</result>
+          <result name="fail">/admin.jsp</result>
+ </action>
+  <action name="comment" class="com.action.CommentAction">
+          <result name="success">/comment.jsp</result>
+          <result name="fail">/comment.jsp</result>
+ </action>
+
+  </package>
+ <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- default locale -->
+</struts>    

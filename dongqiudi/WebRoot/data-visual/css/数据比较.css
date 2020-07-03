@@ -1,0 +1,25 @@
+/* CSS Document */
+.main{ 
+float : left;
+}
+.main1{ 
+float : left;
+}
+.main4{ 
+float : left;
+}
+.main5{
+	float: left;
+}
+.main{
+	width: 500px;height:600px;
+}
+.main1{
+	width: 900px;height:600px;
+}
+.main2{
+	width: 1000px;height:600px;
+}
+.main4{
+	width: 500px;height:50px;
+}

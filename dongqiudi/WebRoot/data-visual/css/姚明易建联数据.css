@@ -1,0 +1,18 @@
+/* CSS Document */
+div{ 
+float: left;
+}
+.main{
+	width: 650px;height:600px;
+}
+.main2{
+	width: 650px;height:600px;
+}
+.main3{
+	width: 650px;height:50px;
+	padding-left: 30px;
+}
+.main4{
+	width: 650px;height:50px;
+	padding-left: 30px;
+}
